@@ -4,13 +4,14 @@ import ItemRow from './ItemRow';
 
 function ItemList({ items, onEdit, onDelete }) {
   return (
-    <table className="min-w-full bg-white border border-gray-200 rounded-md overflow-hidden shadow-md">
+    <table className="min-w-full overflow-hidden bg-white border border-gray-200 rounded-md shadow-md">
       <thead>
         <tr>
-          <th className="py-2 px-4 border-b">Name</th>
-          <th className="py-2 px-4 border-b">Price</th>
-          <th className="py-2 px-4 border-b">Stock</th>
-          <th className="py-2 px-4 border-b">Actions</th>
+          <th className="px-4 py-2 border-b">Name</th>
+          <th className="px-4 py-2 border-b">Price</th>
+          <th className="px-4 py-2 border-b">Stock</th>
+          <th className="px-4 py-2 border-b">Keterangan</th>
+          <th className="px-4 py-2 border-b">Actions</th>
         </tr>
       </thead>
       <tbody>

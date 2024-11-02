@@ -2,13 +2,13 @@
 import React, { useState, useEffect } from "react";
 
 function ItemForm({ onSubmit, editingItem }) {
-  const [form, setForm] = useState({ nama: "", hrg: "", jml: "" });
+  const [form, setForm] = useState({ nama: "", hrg: "", jml: "", ket: "" });
 
   useEffect(() => {
     if (editingItem) {
       setForm(editingItem);
     } else {
-      setForm({ nama: "", hrg: "", jml: "" });
+      setForm({ nama: "", hrg: "", jml: "", ket: "" });
     }
   }, [editingItem]);
 
@@ -19,7 +19,7 @@ function ItemForm({ onSubmit, editingItem }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(form);
-    setForm({ nama: "", hrg: "", jml: "" });
+    setForm({ nama: "", hrg: "", jml: "", ket: "" });
   };
 
   return (
@@ -50,6 +50,15 @@ function ItemForm({ onSubmit, editingItem }) {
         name="jml"
         placeholder="jml"
         value={form.jml}
+        onChange={handleInputChange}
+        required
+        className="w-full p-2 border rounded-md"
+      />
+      <input
+        type="text"
+        name="ket"
+        placeholder="kett"
+        value={form.ket}
         onChange={handleInputChange}
         required
         className="w-full p-2 border rounded-md"

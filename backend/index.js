@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const db = require("./config").default;
+const db = require("./config");
 
 const app = express();
 app.use(cors({ origin: "http://localhost:3000" }));
@@ -20,7 +20,7 @@ app.get("/api/barang", (req, res) => {
       res.json(results);
     }
   });
-});
+}); 
 
 // Get item by ID
 app.get("/api/barang/:id", (req, res) => {
@@ -37,23 +37,23 @@ app.get("/api/barang/:id", (req, res) => {
 
 // Create new item
 app.post("/api/barang", (req, res) => {
-  const { nama, hrg, jml } = req.body;
-  const query = "INSERT INTO barang (nama, hrg, jml) VALUES (?, ?, ?)";
-  db.query(query, [nama, hrg, jml], (err, results) => {
+  const { nama, hrg, jml, ket } = req.body;
+  const query = "INSERT INTO barang (nama, hrg, jml, ket) VALUES (?, ?, ?, ?)";
+  db.query(query, [nama, hrg, jml, ket], (err, results) => {
     if (err) {
       console.error(err);
       res.status(500).json({ error: "Failed to create item" });
     } else {
-      res.status(201).json({ id: results.insertId, nama, hrg, jml });
+      res.status(201).json({ id: results.insertId, nama, hrg, jml, ket });
     }
   });
 });
 
 // Update item
 app.put("/api/barang/:id", (req, res) => {
-  const { nama, hrg, jml } = req.body;
-  const query = "UPDATE barang SET nama = ?, hrg = ?, jml = ? WHERE id = ?";
-  db.query(query, [nama, hrg, jml, req.params.id], (err) => {
+  const { nama, hrg, jml, ket } = req.body;
+  const query = "UPDATE barang SET nama = ?, hrg = ?, jml = ?, ket = ?, WHERE id = ?";
+  db.query(query, [nama, hrg, jml, ket, req.params.id], (err) => {
     if (err) {
       console.error(err);
       res.status(500).json({ error: "Failed to update item" });
